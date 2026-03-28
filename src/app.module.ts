@@ -2,6 +2,7 @@ import { Module } from '@nestjs/common';
 import { ConfigModule } from '@nestjs/config';
 import { LoggerModule } from 'nestjs-pino';
 import { PrismaModule } from './prisma/prisma.module';
+import { AuthModule } from './modules/auth/auth.module';
 import { configuration, validationSchema } from './config/configuration';
 
 @Module({
@@ -22,6 +23,7 @@ import { configuration, validationSchema } from './config/configuration';
       },
     }),
     PrismaModule,
+    AuthModule,
   ],
 })
 export class AppModule {}

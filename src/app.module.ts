@@ -3,6 +3,7 @@ import { ConfigModule } from '@nestjs/config';
 import { LoggerModule } from 'nestjs-pino';
 import { PrismaModule } from './prisma/prisma.module';
 import { AuthModule } from './modules/auth/auth.module';
+import { ProfileModule } from './modules/profile/profile.module';
 import { configuration, validationSchema } from './config/configuration';
 import { ProfileModule } from './modules/profile/profile.module';
 
@@ -25,6 +26,7 @@ import { ProfileModule } from './modules/profile/profile.module';
     }),
     PrismaModule,
     AuthModule,
+    ProfileModule,
     ProfileModule,
   ],
 })

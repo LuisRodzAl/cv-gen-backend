@@ -1,5 +1,6 @@
-import { Body, Controller, Delete, Get, Param, Patch, Post, UseGuards } from '@nestjs/common';
-import { ApiBearerAuth, ApiOperation, ApiTags } from '@nestjs/swagger';
+import { Body, Controller, Delete, Get, Param, Patch, Post, UploadedFile, UseGuards, UseInterceptors, BadRequestException } from '@nestjs/common';
+import { FileInterceptor } from '@nestjs/platform-express';
+import { ApiBearerAuth, ApiBody, ApiConsumes, ApiOperation, ApiTags } from '@nestjs/swagger';
 import { JwtAuthGuard } from '../../common/guards/jwt-auth.guard';
 import { CurrentUser } from '../../common/decorators/current-user.decorator';
 import type { CurrentUserData } from '../../common/decorators/current-user.decorator';
@@ -12,6 +13,8 @@ import { CreateEducationDto } from './dto/education/create-education.dto';
 import { UpdateEducationDto } from './dto/education/update-education.dto';
 import { CreateSkillDto } from './dto/skill/create-skill.dto';
 import { UpdateSkillDto } from './dto/skill/update-skill.dto';
+import { CreateCertificateDto } from './dto/certificate/create-certificate.dto';
+import { UpdateCertificateDto } from './dto/certificate/update-certificate.dto';
 
 @ApiTags('profile')
 @ApiBearerAuth()
@@ -110,5 +113,70 @@ export class ProfileController {
   @ApiOperation({ summary: 'Eliminar habilidad' })
   removeSkill(@CurrentUser() user: CurrentUserData, @Param('id') id: string) {
     return this.profileService.removeSkill(user.id, id);
+  }
+
+  // --- Certificates ---
+
+  @Post('certificate')
+  @ApiOperation({ summary: 'Agregar certificado (con imagen opcional)' })
+  @ApiConsumes('multipart/form-data')
+  @ApiBody({
+    schema: {
+      type: 'object',
+      properties: {
+        name: { type: 'string' },
+        issuer: { type: 'string' },
+        issueDate: { type: 'string' },
+        expiryDate: { type: 'string' },
+        description: { type: 'string' },
+        image: { type: 'string', format: 'binary' },
+      },
+    },
+  })
+  @UseInterceptors(FileInterceptor('image', {
+    limits: { fileSize: 5 * 1024 * 1024 },
+    fileFilter: (_req, file, cb) => {
+      const allowed = ['image/jpeg', 'image/png', 'image/webp', 'application/pdf'];
+      allowed.includes(file.mimetype) ? cb(null, true) : cb(new BadRequestException('Formato no permitido'), false);
+    },
+  }))
+  addCertificate(
+    @CurrentUser() user: CurrentUserData,
+    @Body() dto: CreateCertificateDto,
+    @UploadedFile() file: Express.Multer.File,
+  ) {
+    return this.profileService.addCertificate(user.id, dto, file);
+  }
+
+  @Patch('certificate/:id')
+  @ApiOperation({ summary: 'Actualizar certificado' })
+  @ApiConsumes('multipart/form-data')
+  @ApiBody({
+    schema: {
+      type: 'object',
+      properties: {
+        name: { type: 'string' },
+        issuer: { type: 'string' },
+        issueDate: { type: 'string' },
+        expiryDate: { type: 'string' },
+        description: { type: 'string' },
+        image: { type: 'string', format: 'binary' },
+      },
+    },
+  })
+  @UseInterceptors(FileInterceptor('image', { limits: { fileSize: 5 * 1024 * 1024 } }))
+  updateCertificate(
+    @CurrentUser() user: CurrentUserData,
+    @Param('id') id: string,
+    @Body() dto: UpdateCertificateDto,
+    @UploadedFile() file: Express.Multer.File,
+  ) {
+    return this.profileService.updateCertificate(user.id, id, dto, file);
+  }
+
+  @Delete('certificate/:id')
+  @ApiOperation({ summary: 'Eliminar certificado' })
+  removeCertificate(@CurrentUser() user: CurrentUserData, @Param('id') id: string) {
+    return this.profileService.removeCertificate(user.id, id);
   }
 }

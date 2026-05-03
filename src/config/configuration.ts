@@ -6,6 +6,7 @@ export const validationSchema = Joi.object({
   DATABASE_URL: Joi.string().required(),
   DIRECT_URL: Joi.string().required(),
   SUPABASE_URL: Joi.string().required(),
+  SUPABASE_SERVICE_KEY: Joi.string().required(),
   GOOGLE_API_KEY: Joi.string().required(),
 });
 
@@ -18,6 +19,7 @@ export const configuration = () => ({
   },
   supabase: {
     url: process.env.SUPABASE_URL,
+    serviceKey: process.env.SUPABASE_SERVICE_KEY,
     jwksUri: `${process.env.SUPABASE_URL}/auth/v1/.well-known/jwks.json`,
   },
   google: {

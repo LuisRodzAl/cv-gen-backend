@@ -210,6 +210,7 @@ export type ProfileWhereInput = {
   experiences?: Prisma.WorkExperienceListRelationFilter
   skills?: Prisma.SkillListRelationFilter
   educations?: Prisma.EducationListRelationFilter
+  certificates?: Prisma.CertificateListRelationFilter
 }
 
 export type ProfileOrderByWithRelationInput = {
@@ -225,6 +226,7 @@ export type ProfileOrderByWithRelationInput = {
   experiences?: Prisma.WorkExperienceOrderByRelationAggregateInput
   skills?: Prisma.SkillOrderByRelationAggregateInput
   educations?: Prisma.EducationOrderByRelationAggregateInput
+  certificates?: Prisma.CertificateOrderByRelationAggregateInput
 }
 
 export type ProfileWhereUniqueInput = Prisma.AtLeast<{
@@ -243,6 +245,7 @@ export type ProfileWhereUniqueInput = Prisma.AtLeast<{
   experiences?: Prisma.WorkExperienceListRelationFilter
   skills?: Prisma.SkillListRelationFilter
   educations?: Prisma.EducationListRelationFilter
+  certificates?: Prisma.CertificateListRelationFilter
 }, "id" | "userId">
 
 export type ProfileOrderByWithAggregationInput = {
@@ -285,6 +288,7 @@ export type ProfileCreateInput = {
   experiences?: Prisma.WorkExperienceCreateNestedManyWithoutProfileInput
   skills?: Prisma.SkillCreateNestedManyWithoutProfileInput
   educations?: Prisma.EducationCreateNestedManyWithoutProfileInput
+  certificates?: Prisma.CertificateCreateNestedManyWithoutProfileInput
 }
 
 export type ProfileUncheckedCreateInput = {
@@ -299,6 +303,7 @@ export type ProfileUncheckedCreateInput = {
   experiences?: Prisma.WorkExperienceUncheckedCreateNestedManyWithoutProfileInput
   skills?: Prisma.SkillUncheckedCreateNestedManyWithoutProfileInput
   educations?: Prisma.EducationUncheckedCreateNestedManyWithoutProfileInput
+  certificates?: Prisma.CertificateUncheckedCreateNestedManyWithoutProfileInput
 }
 
 export type ProfileUpdateInput = {
@@ -313,6 +318,7 @@ export type ProfileUpdateInput = {
   experiences?: Prisma.WorkExperienceUpdateManyWithoutProfileNestedInput
   skills?: Prisma.SkillUpdateManyWithoutProfileNestedInput
   educations?: Prisma.EducationUpdateManyWithoutProfileNestedInput
+  certificates?: Prisma.CertificateUpdateManyWithoutProfileNestedInput
 }
 
 export type ProfileUncheckedUpdateInput = {
@@ -327,6 +333,7 @@ export type ProfileUncheckedUpdateInput = {
   experiences?: Prisma.WorkExperienceUncheckedUpdateManyWithoutProfileNestedInput
   skills?: Prisma.SkillUncheckedUpdateManyWithoutProfileNestedInput
   educations?: Prisma.EducationUncheckedUpdateManyWithoutProfileNestedInput
+  certificates?: Prisma.CertificateUncheckedUpdateManyWithoutProfileNestedInput
 }
 
 export type ProfileCreateManyInput = {
@@ -482,6 +489,20 @@ export type ProfileUpdateOneRequiredWithoutEducationsNestedInput = {
   update?: Prisma.XOR<Prisma.XOR<Prisma.ProfileUpdateToOneWithWhereWithoutEducationsInput, Prisma.ProfileUpdateWithoutEducationsInput>, Prisma.ProfileUncheckedUpdateWithoutEducationsInput>
 }
 
+export type ProfileCreateNestedOneWithoutCertificatesInput = {
+  create?: Prisma.XOR<Prisma.ProfileCreateWithoutCertificatesInput, Prisma.ProfileUncheckedCreateWithoutCertificatesInput>
+  connectOrCreate?: Prisma.ProfileCreateOrConnectWithoutCertificatesInput
+  connect?: Prisma.ProfileWhereUniqueInput
+}
+
+export type ProfileUpdateOneRequiredWithoutCertificatesNestedInput = {
+  create?: Prisma.XOR<Prisma.ProfileCreateWithoutCertificatesInput, Prisma.ProfileUncheckedCreateWithoutCertificatesInput>
+  connectOrCreate?: Prisma.ProfileCreateOrConnectWithoutCertificatesInput
+  upsert?: Prisma.ProfileUpsertWithoutCertificatesInput
+  connect?: Prisma.ProfileWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.ProfileUpdateToOneWithWhereWithoutCertificatesInput, Prisma.ProfileUpdateWithoutCertificatesInput>, Prisma.ProfileUncheckedUpdateWithoutCertificatesInput>
+}
+
 export type ProfileCreateWithoutUserInput = {
   id?: string
   fullName: string
@@ -493,6 +514,7 @@ export type ProfileCreateWithoutUserInput = {
   experiences?: Prisma.WorkExperienceCreateNestedManyWithoutProfileInput
   skills?: Prisma.SkillCreateNestedManyWithoutProfileInput
   educations?: Prisma.EducationCreateNestedManyWithoutProfileInput
+  certificates?: Prisma.CertificateCreateNestedManyWithoutProfileInput
 }
 
 export type ProfileUncheckedCreateWithoutUserInput = {
@@ -506,6 +528,7 @@ export type ProfileUncheckedCreateWithoutUserInput = {
   experiences?: Prisma.WorkExperienceUncheckedCreateNestedManyWithoutProfileInput
   skills?: Prisma.SkillUncheckedCreateNestedManyWithoutProfileInput
   educations?: Prisma.EducationUncheckedCreateNestedManyWithoutProfileInput
+  certificates?: Prisma.CertificateUncheckedCreateNestedManyWithoutProfileInput
 }
 
 export type ProfileCreateOrConnectWithoutUserInput = {
@@ -535,6 +558,7 @@ export type ProfileUpdateWithoutUserInput = {
   experiences?: Prisma.WorkExperienceUpdateManyWithoutProfileNestedInput
   skills?: Prisma.SkillUpdateManyWithoutProfileNestedInput
   educations?: Prisma.EducationUpdateManyWithoutProfileNestedInput
+  certificates?: Prisma.CertificateUpdateManyWithoutProfileNestedInput
 }
 
 export type ProfileUncheckedUpdateWithoutUserInput = {
@@ -548,6 +572,7 @@ export type ProfileUncheckedUpdateWithoutUserInput = {
   experiences?: Prisma.WorkExperienceUncheckedUpdateManyWithoutProfileNestedInput
   skills?: Prisma.SkillUncheckedUpdateManyWithoutProfileNestedInput
   educations?: Prisma.EducationUncheckedUpdateManyWithoutProfileNestedInput
+  certificates?: Prisma.CertificateUncheckedUpdateManyWithoutProfileNestedInput
 }
 
 export type ProfileCreateWithoutExperiencesInput = {
@@ -561,6 +586,7 @@ export type ProfileCreateWithoutExperiencesInput = {
   user: Prisma.UserCreateNestedOneWithoutProfileInput
   skills?: Prisma.SkillCreateNestedManyWithoutProfileInput
   educations?: Prisma.EducationCreateNestedManyWithoutProfileInput
+  certificates?: Prisma.CertificateCreateNestedManyWithoutProfileInput
 }
 
 export type ProfileUncheckedCreateWithoutExperiencesInput = {
@@ -574,6 +600,7 @@ export type ProfileUncheckedCreateWithoutExperiencesInput = {
   githubUrl?: string | null
   skills?: Prisma.SkillUncheckedCreateNestedManyWithoutProfileInput
   educations?: Prisma.EducationUncheckedCreateNestedManyWithoutProfileInput
+  certificates?: Prisma.CertificateUncheckedCreateNestedManyWithoutProfileInput
 }
 
 export type ProfileCreateOrConnectWithoutExperiencesInput = {
@@ -603,6 +630,7 @@ export type ProfileUpdateWithoutExperiencesInput = {
   user?: Prisma.UserUpdateOneRequiredWithoutProfileNestedInput
   skills?: Prisma.SkillUpdateManyWithoutProfileNestedInput
   educations?: Prisma.EducationUpdateManyWithoutProfileNestedInput
+  certificates?: Prisma.CertificateUpdateManyWithoutProfileNestedInput
 }
 
 export type ProfileUncheckedUpdateWithoutExperiencesInput = {
@@ -616,6 +644,7 @@ export type ProfileUncheckedUpdateWithoutExperiencesInput = {
   githubUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   skills?: Prisma.SkillUncheckedUpdateManyWithoutProfileNestedInput
   educations?: Prisma.EducationUncheckedUpdateManyWithoutProfileNestedInput
+  certificates?: Prisma.CertificateUncheckedUpdateManyWithoutProfileNestedInput
 }
 
 export type ProfileCreateWithoutSkillsInput = {
@@ -629,6 +658,7 @@ export type ProfileCreateWithoutSkillsInput = {
   user: Prisma.UserCreateNestedOneWithoutProfileInput
   experiences?: Prisma.WorkExperienceCreateNestedManyWithoutProfileInput
   educations?: Prisma.EducationCreateNestedManyWithoutProfileInput
+  certificates?: Prisma.CertificateCreateNestedManyWithoutProfileInput
 }
 
 export type ProfileUncheckedCreateWithoutSkillsInput = {
@@ -642,6 +672,7 @@ export type ProfileUncheckedCreateWithoutSkillsInput = {
   githubUrl?: string | null
   experiences?: Prisma.WorkExperienceUncheckedCreateNestedManyWithoutProfileInput
   educations?: Prisma.EducationUncheckedCreateNestedManyWithoutProfileInput
+  certificates?: Prisma.CertificateUncheckedCreateNestedManyWithoutProfileInput
 }
 
 export type ProfileCreateOrConnectWithoutSkillsInput = {
@@ -671,6 +702,7 @@ export type ProfileUpdateWithoutSkillsInput = {
   user?: Prisma.UserUpdateOneRequiredWithoutProfileNestedInput
   experiences?: Prisma.WorkExperienceUpdateManyWithoutProfileNestedInput
   educations?: Prisma.EducationUpdateManyWithoutProfileNestedInput
+  certificates?: Prisma.CertificateUpdateManyWithoutProfileNestedInput
 }
 
 export type ProfileUncheckedUpdateWithoutSkillsInput = {
@@ -684,6 +716,7 @@ export type ProfileUncheckedUpdateWithoutSkillsInput = {
   githubUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   experiences?: Prisma.WorkExperienceUncheckedUpdateManyWithoutProfileNestedInput
   educations?: Prisma.EducationUncheckedUpdateManyWithoutProfileNestedInput
+  certificates?: Prisma.CertificateUncheckedUpdateManyWithoutProfileNestedInput
 }
 
 export type ProfileCreateWithoutEducationsInput = {
@@ -697,6 +730,7 @@ export type ProfileCreateWithoutEducationsInput = {
   user: Prisma.UserCreateNestedOneWithoutProfileInput
   experiences?: Prisma.WorkExperienceCreateNestedManyWithoutProfileInput
   skills?: Prisma.SkillCreateNestedManyWithoutProfileInput
+  certificates?: Prisma.CertificateCreateNestedManyWithoutProfileInput
 }
 
 export type ProfileUncheckedCreateWithoutEducationsInput = {
@@ -710,6 +744,7 @@ export type ProfileUncheckedCreateWithoutEducationsInput = {
   githubUrl?: string | null
   experiences?: Prisma.WorkExperienceUncheckedCreateNestedManyWithoutProfileInput
   skills?: Prisma.SkillUncheckedCreateNestedManyWithoutProfileInput
+  certificates?: Prisma.CertificateUncheckedCreateNestedManyWithoutProfileInput
 }
 
 export type ProfileCreateOrConnectWithoutEducationsInput = {
@@ -739,6 +774,7 @@ export type ProfileUpdateWithoutEducationsInput = {
   user?: Prisma.UserUpdateOneRequiredWithoutProfileNestedInput
   experiences?: Prisma.WorkExperienceUpdateManyWithoutProfileNestedInput
   skills?: Prisma.SkillUpdateManyWithoutProfileNestedInput
+  certificates?: Prisma.CertificateUpdateManyWithoutProfileNestedInput
 }
 
 export type ProfileUncheckedUpdateWithoutEducationsInput = {
@@ -752,6 +788,79 @@ export type ProfileUncheckedUpdateWithoutEducationsInput = {
   githubUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   experiences?: Prisma.WorkExperienceUncheckedUpdateManyWithoutProfileNestedInput
   skills?: Prisma.SkillUncheckedUpdateManyWithoutProfileNestedInput
+  certificates?: Prisma.CertificateUncheckedUpdateManyWithoutProfileNestedInput
+}
+
+export type ProfileCreateWithoutCertificatesInput = {
+  id?: string
+  fullName: string
+  title?: string | null
+  summary?: string | null
+  location?: string | null
+  linkedinUrl?: string | null
+  githubUrl?: string | null
+  user: Prisma.UserCreateNestedOneWithoutProfileInput
+  experiences?: Prisma.WorkExperienceCreateNestedManyWithoutProfileInput
+  skills?: Prisma.SkillCreateNestedManyWithoutProfileInput
+  educations?: Prisma.EducationCreateNestedManyWithoutProfileInput
+}
+
+export type ProfileUncheckedCreateWithoutCertificatesInput = {
+  id?: string
+  userId: string
+  fullName: string
+  title?: string | null
+  summary?: string | null
+  location?: string | null
+  linkedinUrl?: string | null
+  githubUrl?: string | null
+  experiences?: Prisma.WorkExperienceUncheckedCreateNestedManyWithoutProfileInput
+  skills?: Prisma.SkillUncheckedCreateNestedManyWithoutProfileInput
+  educations?: Prisma.EducationUncheckedCreateNestedManyWithoutProfileInput
+}
+
+export type ProfileCreateOrConnectWithoutCertificatesInput = {
+  where: Prisma.ProfileWhereUniqueInput
+  create: Prisma.XOR<Prisma.ProfileCreateWithoutCertificatesInput, Prisma.ProfileUncheckedCreateWithoutCertificatesInput>
+}
+
+export type ProfileUpsertWithoutCertificatesInput = {
+  update: Prisma.XOR<Prisma.ProfileUpdateWithoutCertificatesInput, Prisma.ProfileUncheckedUpdateWithoutCertificatesInput>
+  create: Prisma.XOR<Prisma.ProfileCreateWithoutCertificatesInput, Prisma.ProfileUncheckedCreateWithoutCertificatesInput>
+  where?: Prisma.ProfileWhereInput
+}
+
+export type ProfileUpdateToOneWithWhereWithoutCertificatesInput = {
+  where?: Prisma.ProfileWhereInput
+  data: Prisma.XOR<Prisma.ProfileUpdateWithoutCertificatesInput, Prisma.ProfileUncheckedUpdateWithoutCertificatesInput>
+}
+
+export type ProfileUpdateWithoutCertificatesInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  fullName?: Prisma.StringFieldUpdateOperationsInput | string
+  title?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  summary?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  location?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  linkedinUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  githubUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  user?: Prisma.UserUpdateOneRequiredWithoutProfileNestedInput
+  experiences?: Prisma.WorkExperienceUpdateManyWithoutProfileNestedInput
+  skills?: Prisma.SkillUpdateManyWithoutProfileNestedInput
+  educations?: Prisma.EducationUpdateManyWithoutProfileNestedInput
+}
+
+export type ProfileUncheckedUpdateWithoutCertificatesInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  userId?: Prisma.StringFieldUpdateOperationsInput | string
+  fullName?: Prisma.StringFieldUpdateOperationsInput | string
+  title?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  summary?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  location?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  linkedinUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  githubUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  experiences?: Prisma.WorkExperienceUncheckedUpdateManyWithoutProfileNestedInput
+  skills?: Prisma.SkillUncheckedUpdateManyWithoutProfileNestedInput
+  educations?: Prisma.EducationUncheckedUpdateManyWithoutProfileNestedInput
 }
 
 
@@ -763,12 +872,14 @@ export type ProfileCountOutputType = {
   experiences: number
   skills: number
   educations: number
+  certificates: number
 }
 
 export type ProfileCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   experiences?: boolean | ProfileCountOutputTypeCountExperiencesArgs
   skills?: boolean | ProfileCountOutputTypeCountSkillsArgs
   educations?: boolean | ProfileCountOutputTypeCountEducationsArgs
+  certificates?: boolean | ProfileCountOutputTypeCountCertificatesArgs
 }
 
 /**
@@ -802,6 +913,13 @@ export type ProfileCountOutputTypeCountEducationsArgs<ExtArgs extends runtime.Ty
   where?: Prisma.EducationWhereInput
 }
 
+/**
+ * ProfileCountOutputType without action
+ */
+export type ProfileCountOutputTypeCountCertificatesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.CertificateWhereInput
+}
+
 
 export type ProfileSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
@@ -816,6 +934,7 @@ export type ProfileSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs 
   experiences?: boolean | Prisma.Profile$experiencesArgs<ExtArgs>
   skills?: boolean | Prisma.Profile$skillsArgs<ExtArgs>
   educations?: boolean | Prisma.Profile$educationsArgs<ExtArgs>
+  certificates?: boolean | Prisma.Profile$certificatesArgs<ExtArgs>
   _count?: boolean | Prisma.ProfileCountOutputTypeDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["profile"]>
 
@@ -860,6 +979,7 @@ export type ProfileInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs
   experiences?: boolean | Prisma.Profile$experiencesArgs<ExtArgs>
   skills?: boolean | Prisma.Profile$skillsArgs<ExtArgs>
   educations?: boolean | Prisma.Profile$educationsArgs<ExtArgs>
+  certificates?: boolean | Prisma.Profile$certificatesArgs<ExtArgs>
   _count?: boolean | Prisma.ProfileCountOutputTypeDefaultArgs<ExtArgs>
 }
 export type ProfileIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
@@ -876,6 +996,7 @@ export type $ProfilePayload<ExtArgs extends runtime.Types.Extensions.InternalArg
     experiences: Prisma.$WorkExperiencePayload<ExtArgs>[]
     skills: Prisma.$SkillPayload<ExtArgs>[]
     educations: Prisma.$EducationPayload<ExtArgs>[]
+    certificates: Prisma.$CertificatePayload<ExtArgs>[]
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: string
@@ -1284,6 +1405,7 @@ export interface Prisma__ProfileClient<T, Null = never, ExtArgs extends runtime.
   experiences<T extends Prisma.Profile$experiencesArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Profile$experiencesArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$WorkExperiencePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   skills<T extends Prisma.Profile$skillsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Profile$skillsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$SkillPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   educations<T extends Prisma.Profile$educationsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Profile$educationsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$EducationPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  certificates<T extends Prisma.Profile$certificatesArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Profile$certificatesArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$CertificatePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -1791,6 +1913,30 @@ export type Profile$educationsArgs<ExtArgs extends runtime.Types.Extensions.Inte
   take?: number
   skip?: number
   distinct?: Prisma.EducationScalarFieldEnum | Prisma.EducationScalarFieldEnum[]
+}
+
+/**
+ * Profile.certificates
+ */
+export type Profile$certificatesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the Certificate
+   */
+  select?: Prisma.CertificateSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the Certificate
+   */
+  omit?: Prisma.CertificateOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.CertificateInclude<ExtArgs> | null
+  where?: Prisma.CertificateWhereInput
+  orderBy?: Prisma.CertificateOrderByWithRelationInput | Prisma.CertificateOrderByWithRelationInput[]
+  cursor?: Prisma.CertificateWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.CertificateScalarFieldEnum | Prisma.CertificateScalarFieldEnum[]
 }
 
 /**

@@ -1,5 +1,6 @@
 import { Body, Controller, Delete, Get, Param, Patch, Post, UseGuards } from '@nestjs/common';
 import { ApiBearerAuth, ApiOperation, ApiTags } from '@nestjs/swagger';
+import { Throttle } from '@nestjs/throttler';
 import { JwtAuthGuard } from '../../common/guards/jwt-auth.guard';
 import { CurrentUser } from '../../common/decorators/current-user.decorator';
 import type { CurrentUserData } from '../../common/decorators/current-user.decorator';
@@ -15,6 +16,7 @@ export class CvController {
   constructor(private readonly cvService: CvService) {}
 
   @Post('generate')
+  @Throttle({ ai: { ttl: 60000, limit: 5 } })
   @ApiOperation({ summary: 'Generar CV con IA a partir de una oferta de trabajo' })
   generate(@CurrentUser() user: CurrentUserData, @Body() dto: GenerateCvDto) {
     return this.cvService.generate(user.id, dto);

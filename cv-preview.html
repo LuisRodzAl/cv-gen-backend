@@ -1,0 +1,255 @@
+﻿<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CV - Backend Engineer</title>
+    <style>
+        /* Harvard Classic Style */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: "Times New Roman", Times, serif;
+            font-size: 11pt;
+            line-height: 1.3;
+            color: #000;
+            background-color: #fff;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 2.5cm;
+        }
+
+        /* Typography */
+        h1 {
+            font-size: 18pt;
+            text-transform: uppercase;
+            text-align: center;
+            margin-bottom: 4px;
+            letter-spacing: 1px;
+        }
+
+        h2 {
+            font-size: 12pt;
+            text-transform: uppercase;
+            border-bottom: 1px solid #000;
+            margin-top: 15px;
+            margin-bottom: 8px;
+            padding-bottom: 2px;
+            font-weight: bold;
+        }
+
+        h3 {
+            font-size: 11pt;
+            font-weight: bold;
+            margin: 0;
+        }
+
+        p {
+            margin-bottom: 8px;
+            text-align: justify;
+        }
+
+        /* Contact Section */
+        .contact-info {
+            text-align: center;
+            font-size: 10pt;
+            margin-bottom: 15px;
+        }
+
+        .contact-info span {
+            margin: 0 5px;
+        }
+
+        /* Experience & Education */
+        .entry {
+            margin-bottom: 12px;
+        }
+
+        .entry-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            margin-bottom: 2px;
+        }
+
+        .entry-subheader {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            font-style: italic;
+            margin-bottom: 4px;
+        }
+
+        .entry-description {
+            margin-left: 15px;
+        }
+
+        ul {
+            margin-left: 20px;
+            margin-bottom: 8px;
+        }
+
+        li {
+            margin-bottom: 3px;
+        }
+
+        .technologies {
+            font-size: 10pt;
+            font-style: italic;
+            margin-top: 4px;
+        }
+
+        /* Skills */
+        .skills-grid {
+            display: table;
+            width: 100%;
+        }
+
+        .skills-row {
+            display: table-row;
+        }
+
+        .skills-category {
+            display: table-cell;
+            font-weight: bold;
+            width: 25%;
+            padding: 2px 0;
+        }
+
+        .skills-list {
+            display: table-cell;
+            padding: 2px 0;
+        }
+
+        /* Print optimization */
+        @media print {
+            body {
+                background-color: #fff;
+            }
+            .container {
+                width: 100%;
+                margin: 0;
+                padding: 0; /* Let the browser handle the 2.5cm margin from @page */
+            }
+            @page {
+                size: A4;
+                margin: 2.5cm;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header>
+            <h1>Ingeniero de Software Backend</h1>
+            <div class="contact-info">
+                <span>Ciudad, País</span> | 
+                <span>+00 123 456 789</span> | 
+                <span>email@ejemplo.com</span> | 
+                <span>linkedin.com/in/perfil</span>
+            </div>
+        </header>
+
+        <!-- Summary -->
+        <section>
+            <h2>Resumen Profesional</h2>
+            <p>Ingeniero de Software especializado en Backend con amplia experiencia en el desarrollo de arquitecturas escalables utilizando NestJS y TypeScript. Experto en el diseño de REST APIs robustas y optimización de bases de datos PostgreSQL, con un sólido enfoque en despliegues eficientes en entornos Cloud.</p>
+        </section>
+
+        <!-- Experience -->
+        <section>
+            <h2>Experiencia Profesional</h2>
+            
+            <div class="entry">
+                <div class="entry-header">
+                    <h3>Tech Solutions Inc.</h3>
+                    <span>2021-01 &ndash; Presente</span>
+                </div>
+                <div class="entry-subheader">
+                    <span>Senior Backend Engineer</span>
+                </div>
+                <ul class="entry-description">
+                    <li>Liderazgo en el desarrollo de microservicios de alto rendimiento utilizando NestJS y TypeScript.</li>
+                    <li>Implementación y optimización de esquemas en PostgreSQL para mejorar la eficiencia de las consultas en un 40%.</li>
+                    <li>Diseño de REST APIs seguras y escalables integradas con servicios de terceros.</li>
+                </ul>
+                <p class="technologies"><strong>Tecnologías:</strong> NestJS, TypeScript, PostgreSQL, REST APIs, Docker</p>
+            </div>
+
+            <div class="entry">
+                <div class="entry-header">
+                    <h3>Digital Services SL</h3>
+                    <span>2018-06 &ndash; 2020-12</span>
+                </div>
+                <div class="entry-subheader">
+                    <span>Backend Developer</span>
+                </div>
+                <ul class="entry-description">
+                    <li>Desarrollo de aplicaciones backend orientadas a objetos, garantizando la integridad de los datos mediante PostgreSQL.</li>
+                    <li>Responsable de la automatización de procesos y cloud deployments, asegurando una disponibilidad del 99.9% de los servicios.</li>
+                </ul>
+                <p class="technologies"><strong>Tecnologías:</strong> Node.js, TypeScript, PostgreSQL, Cloud Deployments, CI/CD</p>
+            </div>
+        </section>
+
+        <!-- Education -->
+        <section>
+            <h2>Educación</h2>
+            <div class="entry">
+                <div class="entry-header">
+                    <h3>Universidad Tecnológica de Ingeniería</h3>
+                    <span>2014-09 &ndash; 2018-06</span>
+                </div>
+                <div class="entry-subheader">
+                    <span>Grado en Ingeniería Informática</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Skills -->
+        <section>
+            <h2>Habilidades Técnicas</h2>
+            <div class="skills-grid">
+                <div class="skills-row">
+                    <span class="skills-category">Frameworks:</span>
+                    <span class="skills-list">NestJS (Expert)</span>
+                </div>
+                <div class="skills-row">
+                    <span class="skills-category">Lenguajes:</span>
+                    <span class="skills-list">TypeScript (Expert)</span>
+                </div>
+                <div class="skills-row">
+                    <span class="skills-category">Bases de Datos:</span>
+                    <span class="skills-list">PostgreSQL (Expert)</span>
+                </div>
+                <div class="skills-row">
+                    <span class="skills-category">Arquitectura:</span>
+                    <span class="skills-list">REST APIs (Expert), Microservices</span>
+                </div>
+                <div class="skills-row">
+                    <span class="skills-category">DevOps/Cloud:</span>
+                    <span class="skills-list">Cloud Deployments (Advanced), Docker, CI/CD</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Keywords (Subtle) -->
+        <section style="margin-top: 20px;">
+            <p style="font-size: 8pt; color: #555; text-align: center;">
+                <em>Keywords: NestJS, PostgreSQL, REST APIs, TypeScript, Cloud deployments, Backend Engineer, Microservices, Scalability</em>
+            </p>
+        </section>
+    </div>
+</body>
+</html>

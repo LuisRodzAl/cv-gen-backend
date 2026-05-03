@@ -29,6 +29,7 @@ model Profile {
   experiences WorkExperience[]
   skills      Skill[]
   educations  Education[]
+  certificates Certificate[]
 }
 
 model WorkExperience {
@@ -60,6 +61,19 @@ model Education {
   degree      String
   startDate   DateTime
   endDate     DateTime?
+}
+
+model Certificate {
+  id          String    @id @default(uuid())
+  profileId   String
+  profile     Profile   @relation(fields: [profileId], references: [id], onDelete: Cascade)
+  name        String
+  issuer      String
+  issueDate   DateTime?
+  expiryDate  DateTime?
+  description String?
+  imageUrl    String?
+  createdAt   DateTime  @default(now())
 }
 
 model GeneratedCv {

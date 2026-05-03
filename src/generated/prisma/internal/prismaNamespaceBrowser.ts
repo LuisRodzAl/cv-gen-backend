@@ -56,6 +56,7 @@ export const ModelName = {
   WorkExperience: 'WorkExperience',
   Skill: 'Skill',
   Education: 'Education',
+  Certificate: 'Certificate',
   GeneratedCv: 'GeneratedCv'
 } as const
 
@@ -133,6 +134,21 @@ export const EducationScalarFieldEnum = {
 } as const
 
 export type EducationScalarFieldEnum = (typeof EducationScalarFieldEnum)[keyof typeof EducationScalarFieldEnum]
+
+
+export const CertificateScalarFieldEnum = {
+  id: 'id',
+  profileId: 'profileId',
+  name: 'name',
+  issuer: 'issuer',
+  issueDate: 'issueDate',
+  expiryDate: 'expiryDate',
+  description: 'description',
+  imageUrl: 'imageUrl',
+  createdAt: 'createdAt'
+} as const
+
+export type CertificateScalarFieldEnum = (typeof CertificateScalarFieldEnum)[keyof typeof CertificateScalarFieldEnum]
 
 
 export const GeneratedCvScalarFieldEnum = {

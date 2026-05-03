@@ -65,6 +65,11 @@ export type Skill = Prisma.SkillModel
  */
 export type Education = Prisma.EducationModel
 /**
+ * Model Certificate
+ * 
+ */
+export type Certificate = Prisma.CertificateModel
+/**
  * Model GeneratedCv
  * 
  */

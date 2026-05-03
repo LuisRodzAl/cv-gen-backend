@@ -6,7 +6,7 @@ export const validationSchema = Joi.object({
   DATABASE_URL: Joi.string().required(),
   DIRECT_URL: Joi.string().required(),
   SUPABASE_URL: Joi.string().required(),
-  ANTHROPIC_API_KEY: Joi.string().required(),
+  GOOGLE_API_KEY: Joi.string().required(),
 });
 
 export const configuration = () => ({
@@ -20,7 +20,7 @@ export const configuration = () => ({
     url: process.env.SUPABASE_URL,
     jwksUri: `${process.env.SUPABASE_URL}/auth/v1/.well-known/jwks.json`,
   },
-  anthropic: {
-    apiKey: process.env.ANTHROPIC_API_KEY,
+  google: {
+    apiKey: process.env.GOOGLE_API_KEY,
   },
 });

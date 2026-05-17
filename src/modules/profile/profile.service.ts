@@ -1,6 +1,7 @@
 import { Injectable, NotFoundException, UploadedFile } from '@nestjs/common';
 import { PrismaService } from '../../prisma/prisma.service';
 import { StorageService } from '../../common/storage/storage.service';
+import { ProfileParserService } from './profile-parser.service';
 import { CreateProfileDto } from './dto/profile/create-profile.dto';
 import { UpdateProfileDto } from './dto/profile/update-profile.dto';
 import { CreateExperienceDto } from './dto/experience/create-experience.dto';
@@ -17,6 +18,7 @@ export class ProfileService {
   constructor(
     private readonly prisma: PrismaService,
     private readonly storageService: StorageService,
+    private readonly profileParserService: ProfileParserService,
   ) {}
 
   // --- Profile ---
@@ -42,6 +44,79 @@ export class ProfileService {
       where: { userId },
       data: dto,
     });
+  }
+
+  async parseAndImportCv(userId: string, file: Express.Multer.File) {
+    const parsedData = await this.profileParserService.parsePdfBuffer(file.buffer, file.mimetype);
+    
+    let profile = await this.prisma.profile.findUnique({ where: { userId } });
+    
+    if (profile) {
+      profile = await this.prisma.profile.update({
+        where: { id: profile.id },
+        data: {
+          fullName: parsedData.fullName || profile.fullName,
+          title: parsedData.title || profile.title,
+          summary: parsedData.summary || profile.summary,
+          location: parsedData.location || profile.location,
+        }
+      });
+    } else {
+      profile = await this.prisma.profile.create({
+        data: {
+          userId,
+          fullName: parsedData.fullName || 'Usuario',
+          title: parsedData.title,
+          summary: parsedData.summary,
+          location: parsedData.location,
+        }
+      });
+    }
+
+    if (parsedData.experiences?.length > 0) {
+      for (const exp of parsedData.experiences) {
+        await this.prisma.workExperience.create({
+          data: {
+            profileId: profile.id,
+            company: exp.company || 'Empresa',
+            position: exp.position || 'Puesto',
+            startDate: isNaN(Date.parse(exp.startDate)) ? new Date() : new Date(exp.startDate),
+            endDate: exp.endDate && !isNaN(Date.parse(exp.endDate)) ? new Date(exp.endDate) : null,
+            description: exp.description || '',
+            technologies: exp.technologies || [],
+          }
+        });
+      }
+    }
+
+    if (parsedData.educations?.length > 0) {
+      for (const edu of parsedData.educations) {
+        await this.prisma.education.create({
+          data: {
+            profileId: profile.id,
+            institution: edu.institution || 'Institución',
+            degree: edu.degree || 'Grado',
+            startDate: isNaN(Date.parse(edu.startDate)) ? new Date() : new Date(edu.startDate),
+            endDate: edu.endDate && !isNaN(Date.parse(edu.endDate)) ? new Date(edu.endDate) : null,
+          }
+        });
+      }
+    }
+
+    if (parsedData.skills?.length > 0) {
+      for (const skill of parsedData.skills) {
+        await this.prisma.skill.create({
+          data: {
+            profileId: profile.id,
+            name: skill.name || 'Habilidad',
+            category: skill.category,
+            level: skill.level || 3,
+          }
+        });
+      }
+    }
+
+    return this.getByUserId(userId);
   }
 
   // --- Experience ---

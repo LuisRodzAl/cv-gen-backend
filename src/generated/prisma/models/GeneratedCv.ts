@@ -32,6 +32,7 @@ export type GeneratedCvMinAggregateOutputType = {
   jobDescription: string | null
   templateName: string | null
   pdfUrl: string | null
+  isPrimary: boolean | null
   createdAt: Date | null
 }
 
@@ -43,6 +44,7 @@ export type GeneratedCvMaxAggregateOutputType = {
   jobDescription: string | null
   templateName: string | null
   pdfUrl: string | null
+  isPrimary: boolean | null
   createdAt: Date | null
 }
 
@@ -55,6 +57,7 @@ export type GeneratedCvCountAggregateOutputType = {
   cvContentJson: number
   templateName: number
   pdfUrl: number
+  isPrimary: number
   createdAt: number
   _all: number
 }
@@ -68,6 +71,7 @@ export type GeneratedCvMinAggregateInputType = {
   jobDescription?: true
   templateName?: true
   pdfUrl?: true
+  isPrimary?: true
   createdAt?: true
 }
 
@@ -79,6 +83,7 @@ export type GeneratedCvMaxAggregateInputType = {
   jobDescription?: true
   templateName?: true
   pdfUrl?: true
+  isPrimary?: true
   createdAt?: true
 }
 
@@ -91,6 +96,7 @@ export type GeneratedCvCountAggregateInputType = {
   cvContentJson?: true
   templateName?: true
   pdfUrl?: true
+  isPrimary?: true
   createdAt?: true
   _all?: true
 }
@@ -176,6 +182,7 @@ export type GeneratedCvGroupByOutputType = {
   cvContentJson: runtime.JsonValue
   templateName: string
   pdfUrl: string | null
+  isPrimary: boolean
   createdAt: Date
   _count: GeneratedCvCountAggregateOutputType | null
   _min: GeneratedCvMinAggregateOutputType | null
@@ -209,6 +216,7 @@ export type GeneratedCvWhereInput = {
   cvContentJson?: Prisma.JsonFilter<"GeneratedCv">
   templateName?: Prisma.StringFilter<"GeneratedCv"> | string
   pdfUrl?: Prisma.StringNullableFilter<"GeneratedCv"> | string | null
+  isPrimary?: Prisma.BoolFilter<"GeneratedCv"> | boolean
   createdAt?: Prisma.DateTimeFilter<"GeneratedCv"> | Date | string
   user?: Prisma.XOR<Prisma.UserScalarRelationFilter, Prisma.UserWhereInput>
 }
@@ -222,6 +230,7 @@ export type GeneratedCvOrderByWithRelationInput = {
   cvContentJson?: Prisma.SortOrder
   templateName?: Prisma.SortOrder
   pdfUrl?: Prisma.SortOrderInput | Prisma.SortOrder
+  isPrimary?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   user?: Prisma.UserOrderByWithRelationInput
 }
@@ -238,6 +247,7 @@ export type GeneratedCvWhereUniqueInput = Prisma.AtLeast<{
   cvContentJson?: Prisma.JsonFilter<"GeneratedCv">
   templateName?: Prisma.StringFilter<"GeneratedCv"> | string
   pdfUrl?: Prisma.StringNullableFilter<"GeneratedCv"> | string | null
+  isPrimary?: Prisma.BoolFilter<"GeneratedCv"> | boolean
   createdAt?: Prisma.DateTimeFilter<"GeneratedCv"> | Date | string
   user?: Prisma.XOR<Prisma.UserScalarRelationFilter, Prisma.UserWhereInput>
 }, "id">
@@ -251,6 +261,7 @@ export type GeneratedCvOrderByWithAggregationInput = {
   cvContentJson?: Prisma.SortOrder
   templateName?: Prisma.SortOrder
   pdfUrl?: Prisma.SortOrderInput | Prisma.SortOrder
+  isPrimary?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   _count?: Prisma.GeneratedCvCountOrderByAggregateInput
   _max?: Prisma.GeneratedCvMaxOrderByAggregateInput
@@ -269,6 +280,7 @@ export type GeneratedCvScalarWhereWithAggregatesInput = {
   cvContentJson?: Prisma.JsonWithAggregatesFilter<"GeneratedCv">
   templateName?: Prisma.StringWithAggregatesFilter<"GeneratedCv"> | string
   pdfUrl?: Prisma.StringNullableWithAggregatesFilter<"GeneratedCv"> | string | null
+  isPrimary?: Prisma.BoolWithAggregatesFilter<"GeneratedCv"> | boolean
   createdAt?: Prisma.DateTimeWithAggregatesFilter<"GeneratedCv"> | Date | string
 }
 
@@ -280,6 +292,7 @@ export type GeneratedCvCreateInput = {
   cvContentJson: Prisma.JsonNullValueInput | runtime.InputJsonValue
   templateName: string
   pdfUrl?: string | null
+  isPrimary?: boolean
   createdAt?: Date | string
   user: Prisma.UserCreateNestedOneWithoutGeneratedCvsInput
 }
@@ -293,6 +306,7 @@ export type GeneratedCvUncheckedCreateInput = {
   cvContentJson: Prisma.JsonNullValueInput | runtime.InputJsonValue
   templateName: string
   pdfUrl?: string | null
+  isPrimary?: boolean
   createdAt?: Date | string
 }
 
@@ -304,6 +318,7 @@ export type GeneratedCvUpdateInput = {
   cvContentJson?: Prisma.JsonNullValueInput | runtime.InputJsonValue
   templateName?: Prisma.StringFieldUpdateOperationsInput | string
   pdfUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  isPrimary?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   user?: Prisma.UserUpdateOneRequiredWithoutGeneratedCvsNestedInput
 }
@@ -317,6 +332,7 @@ export type GeneratedCvUncheckedUpdateInput = {
   cvContentJson?: Prisma.JsonNullValueInput | runtime.InputJsonValue
   templateName?: Prisma.StringFieldUpdateOperationsInput | string
   pdfUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  isPrimary?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
@@ -329,6 +345,7 @@ export type GeneratedCvCreateManyInput = {
   cvContentJson: Prisma.JsonNullValueInput | runtime.InputJsonValue
   templateName: string
   pdfUrl?: string | null
+  isPrimary?: boolean
   createdAt?: Date | string
 }
 
@@ -340,6 +357,7 @@ export type GeneratedCvUpdateManyMutationInput = {
   cvContentJson?: Prisma.JsonNullValueInput | runtime.InputJsonValue
   templateName?: Prisma.StringFieldUpdateOperationsInput | string
   pdfUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  isPrimary?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
@@ -352,6 +370,7 @@ export type GeneratedCvUncheckedUpdateManyInput = {
   cvContentJson?: Prisma.JsonNullValueInput | runtime.InputJsonValue
   templateName?: Prisma.StringFieldUpdateOperationsInput | string
   pdfUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  isPrimary?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
@@ -374,6 +393,7 @@ export type GeneratedCvCountOrderByAggregateInput = {
   cvContentJson?: Prisma.SortOrder
   templateName?: Prisma.SortOrder
   pdfUrl?: Prisma.SortOrder
+  isPrimary?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
 }
 
@@ -385,6 +405,7 @@ export type GeneratedCvMaxOrderByAggregateInput = {
   jobDescription?: Prisma.SortOrder
   templateName?: Prisma.SortOrder
   pdfUrl?: Prisma.SortOrder
+  isPrimary?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
 }
 
@@ -396,6 +417,7 @@ export type GeneratedCvMinOrderByAggregateInput = {
   jobDescription?: Prisma.SortOrder
   templateName?: Prisma.SortOrder
   pdfUrl?: Prisma.SortOrder
+  isPrimary?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
 }
 
@@ -441,6 +463,10 @@ export type GeneratedCvUncheckedUpdateManyWithoutUserNestedInput = {
   deleteMany?: Prisma.GeneratedCvScalarWhereInput | Prisma.GeneratedCvScalarWhereInput[]
 }
 
+export type BoolFieldUpdateOperationsInput = {
+  set?: boolean
+}
+
 export type GeneratedCvCreateWithoutUserInput = {
   id?: string
   targetCompany: string
@@ -449,6 +475,7 @@ export type GeneratedCvCreateWithoutUserInput = {
   cvContentJson: Prisma.JsonNullValueInput | runtime.InputJsonValue
   templateName: string
   pdfUrl?: string | null
+  isPrimary?: boolean
   createdAt?: Date | string
 }
 
@@ -460,6 +487,7 @@ export type GeneratedCvUncheckedCreateWithoutUserInput = {
   cvContentJson: Prisma.JsonNullValueInput | runtime.InputJsonValue
   templateName: string
   pdfUrl?: string | null
+  isPrimary?: boolean
   createdAt?: Date | string
 }
 
@@ -501,6 +529,7 @@ export type GeneratedCvScalarWhereInput = {
   cvContentJson?: Prisma.JsonFilter<"GeneratedCv">
   templateName?: Prisma.StringFilter<"GeneratedCv"> | string
   pdfUrl?: Prisma.StringNullableFilter<"GeneratedCv"> | string | null
+  isPrimary?: Prisma.BoolFilter<"GeneratedCv"> | boolean
   createdAt?: Prisma.DateTimeFilter<"GeneratedCv"> | Date | string
 }
 
@@ -512,6 +541,7 @@ export type GeneratedCvCreateManyUserInput = {
   cvContentJson: Prisma.JsonNullValueInput | runtime.InputJsonValue
   templateName: string
   pdfUrl?: string | null
+  isPrimary?: boolean
   createdAt?: Date | string
 }
 
@@ -523,6 +553,7 @@ export type GeneratedCvUpdateWithoutUserInput = {
   cvContentJson?: Prisma.JsonNullValueInput | runtime.InputJsonValue
   templateName?: Prisma.StringFieldUpdateOperationsInput | string
   pdfUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  isPrimary?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
@@ -534,6 +565,7 @@ export type GeneratedCvUncheckedUpdateWithoutUserInput = {
   cvContentJson?: Prisma.JsonNullValueInput | runtime.InputJsonValue
   templateName?: Prisma.StringFieldUpdateOperationsInput | string
   pdfUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  isPrimary?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
@@ -545,6 +577,7 @@ export type GeneratedCvUncheckedUpdateManyWithoutUserInput = {
   cvContentJson?: Prisma.JsonNullValueInput | runtime.InputJsonValue
   templateName?: Prisma.StringFieldUpdateOperationsInput | string
   pdfUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  isPrimary?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
@@ -559,6 +592,7 @@ export type GeneratedCvSelect<ExtArgs extends runtime.Types.Extensions.InternalA
   cvContentJson?: boolean
   templateName?: boolean
   pdfUrl?: boolean
+  isPrimary?: boolean
   createdAt?: boolean
   user?: boolean | Prisma.UserDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["generatedCv"]>
@@ -572,6 +606,7 @@ export type GeneratedCvSelectCreateManyAndReturn<ExtArgs extends runtime.Types.E
   cvContentJson?: boolean
   templateName?: boolean
   pdfUrl?: boolean
+  isPrimary?: boolean
   createdAt?: boolean
   user?: boolean | Prisma.UserDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["generatedCv"]>
@@ -585,6 +620,7 @@ export type GeneratedCvSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.E
   cvContentJson?: boolean
   templateName?: boolean
   pdfUrl?: boolean
+  isPrimary?: boolean
   createdAt?: boolean
   user?: boolean | Prisma.UserDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["generatedCv"]>
@@ -598,10 +634,11 @@ export type GeneratedCvSelectScalar = {
   cvContentJson?: boolean
   templateName?: boolean
   pdfUrl?: boolean
+  isPrimary?: boolean
   createdAt?: boolean
 }
 
-export type GeneratedCvOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "userId" | "targetCompany" | "targetRole" | "jobDescription" | "cvContentJson" | "templateName" | "pdfUrl" | "createdAt", ExtArgs["result"]["generatedCv"]>
+export type GeneratedCvOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "userId" | "targetCompany" | "targetRole" | "jobDescription" | "cvContentJson" | "templateName" | "pdfUrl" | "isPrimary" | "createdAt", ExtArgs["result"]["generatedCv"]>
 export type GeneratedCvInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   user?: boolean | Prisma.UserDefaultArgs<ExtArgs>
 }
@@ -626,6 +663,7 @@ export type $GeneratedCvPayload<ExtArgs extends runtime.Types.Extensions.Interna
     cvContentJson: runtime.JsonValue
     templateName: string
     pdfUrl: string | null
+    isPrimary: boolean
     createdAt: Date
   }, ExtArgs["result"]["generatedCv"]>
   composites: {}
@@ -1059,6 +1097,7 @@ export interface GeneratedCvFieldRefs {
   readonly cvContentJson: Prisma.FieldRef<"GeneratedCv", 'Json'>
   readonly templateName: Prisma.FieldRef<"GeneratedCv", 'String'>
   readonly pdfUrl: Prisma.FieldRef<"GeneratedCv", 'String'>
+  readonly isPrimary: Prisma.FieldRef<"GeneratedCv", 'Boolean'>
   readonly createdAt: Prisma.FieldRef<"GeneratedCv", 'DateTime'>
 }
     

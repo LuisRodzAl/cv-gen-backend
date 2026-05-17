@@ -160,6 +160,7 @@ export const GeneratedCvScalarFieldEnum = {
   cvContentJson: 'cvContentJson',
   templateName: 'templateName',
   pdfUrl: 'pdfUrl',
+  isPrimary: 'isPrimary',
   createdAt: 'createdAt'
 } as const
 

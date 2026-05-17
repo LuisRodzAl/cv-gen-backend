@@ -1,4 +1,4 @@
-import { IsNotEmpty, IsString } from 'class-validator';
+import { IsIn, IsNotEmpty, IsOptional, IsString } from 'class-validator';
 
 export class GenerateCvDto {
   @IsString()
@@ -16,4 +16,13 @@ export class GenerateCvDto {
   @IsString()
   @IsNotEmpty()
   templateName: string;
+
+  @IsString()
+  @IsIn(['profile', 'primary_cv', 'prompt'])
+  @IsOptional()
+  dataSource?: 'profile' | 'primary_cv' | 'prompt';
+
+  @IsString()
+  @IsOptional()
+  customPrompt?: string;
 }

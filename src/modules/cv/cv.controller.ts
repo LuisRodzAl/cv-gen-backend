@@ -22,6 +22,16 @@ export class CvController {
     return this.cvService.generate(user.id, dto);
   }
 
+  @Post('import-html')
+  @Throttle({ ai: { ttl: 60000, limit: 3 } })
+  @ApiOperation({ summary: 'Importar CV desde HTML y establecer como principal' })
+  importHtml(
+    @CurrentUser() user: CurrentUserData,
+    @Body() body: { htmlContent: string; targetRole: string; targetCompany: string },
+  ) {
+    return this.cvService.importFromHtml(user.id, body.htmlContent, body.targetRole, body.targetCompany);
+  }
+
   @Get()
   @ApiOperation({ summary: 'Listar todos los CVs generados' })
   findAll(@CurrentUser() user: CurrentUserData) {
@@ -38,6 +48,23 @@ export class CvController {
   @ApiOperation({ summary: 'Editar manualmente un CV generado' })
   update(@CurrentUser() user: CurrentUserData, @Param('id') id: string, @Body() dto: UpdateCvDto) {
     return this.cvService.update(user.id, id, dto);
+  }
+
+  @Post(':id/primary')
+  @ApiOperation({ summary: 'Establecer este CV como principal' })
+  setPrimary(@CurrentUser() user: CurrentUserData, @Param('id') id: string) {
+    return this.cvService.setPrimary(user.id, id);
+  }
+
+  @Post(':id/chat')
+  @Throttle({ ai: { ttl: 60000, limit: 5 } })
+  @ApiOperation({ summary: 'Modificar el CV con IA a través de chat' })
+  chat(
+    @CurrentUser() user: CurrentUserData,
+    @Param('id') id: string,
+    @Body() body: { prompt: string; currentJson: any },
+  ) {
+    return this.cvService.chatWithCv(user.id, id, body.prompt, body.currentJson);
   }
 
   @Delete(':id')

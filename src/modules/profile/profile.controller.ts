@@ -43,6 +43,31 @@ export class ProfileController {
     return this.profileService.update(user.id, dto);
   }
 
+  @Post('parse')
+  @ApiOperation({ summary: 'Subir un CV en PDF para extraer la información y guardarla en el perfil' })
+  @ApiConsumes('multipart/form-data')
+  @ApiBody({
+    schema: {
+      type: 'object',
+      properties: {
+        file: { type: 'string', format: 'binary', description: 'El archivo PDF del CV' },
+      },
+    },
+  })
+  @UseInterceptors(FileInterceptor('file', {
+    limits: { fileSize: 10 * 1024 * 1024 }, // 10MB
+    fileFilter: (_req, file, cb) => {
+      file.mimetype === 'application/pdf' ? cb(null, true) : cb(new BadRequestException('Solo se permiten archivos PDF'), false);
+    },
+  }))
+  parseCv(
+    @CurrentUser() user: CurrentUserData,
+    @UploadedFile() file: Express.Multer.File,
+  ) {
+    if (!file) throw new BadRequestException('Se requiere un archivo PDF');
+    return this.profileService.parseAndImportCv(user.id, file);
+  }
+
   // --- Experience ---
 
   @Post('experience')
